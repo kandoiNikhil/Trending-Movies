@@ -1,0 +1,135 @@
+'''
+for line in ftest1:
+	line = line.rstrip()
+	params=line.split("~~~")
+	testLines.append(params[0])
+	words=params[0].split()
+	for each_word in words:
+		if stem(each_word) in wordList:
+			feature_vector[wordList.index(stem(each_word))]+=1  #for basic
+	
+	fout1.write(params[0]+","+str(classifyNB(array(feature_vector),p0V,p1V,pAb))+","+str(params[1])+","+str(params[2])+","+str(params[3])+"\n")
+	feature_vector=[]
+	for each_word in range(len(wordDic)):
+		feature_vector.append(0)
+
+for line in ftest2:
+	line = line.rstrip()
+	params=line.split("~~~")
+	testLines.append(params[0])
+	words=params[0].split()
+	for each_word in words:
+		if stem(each_word) in wordList:
+			feature_vector[wordList.index(stem(each_word))]+=1  #for basic
+	
+	fout2.write(params[0]+","+str(classifyNB(array(feature_vector),p0V,p1V,pAb))+","+str(params[1])+","+str(params[2])+","+str(params[3])+"\n")
+	feature_vector=[]
+	for each_word in range(len(wordDic)):
+		feature_vector.append(0)
+
+for line in ftest3:
+	line = line.rstrip()
+	params=line.split("~~~")
+	testLines.append(params[0])
+	words=params[0].split()
+	for each_word in words:
+		if stem(each_word) in wordList:
+			feature_vector[wordList.index(stem(each_word))]+=1  #for basic
+	
+	fout3.write(params[0]+","+str(classifyNB(array(feature_vector),p0V,p1V,pAb))+","+str(params[1])+","+str(params[2])+","+str(params[3])+"\n")
+	feature_vector=[]
+	for each_word in range(len(wordDic)):
+		feature_vector.append(0)
+
+for line in ftest4:
+	line = line.rstrip()
+	params=line.split("~~~")
+	testLines.append(params[0])
+	words=params[0].split()
+	for each_word in words:
+		if stem(each_word) in wordList:
+			feature_vector[wordList.index(stem(each_word))]+=1  #for basic
+	
+	fout4.write(params[0]+","+str(classifyNB(array(feature_vector),p0V,p1V,pAb))+","+str(params[1])+","+str(params[2])+","+str(params[3])+"\n")
+	feature_vector=[]
+	for each_word in range(len(wordDic)):
+		feature_vector.append(0)
+
+for line in ftest5:
+	line = line.rstrip()
+	params=line.split("~~~")
+	testLines.append(params[0])
+	words=params[0].split()
+	for each_word in words:
+		if stem(each_word) in wordList:
+			feature_vector[wordList.index(stem(each_word))]+=1  #for basic
+	
+	fout5.write(params[0]+","+str(classifyNB(array(feature_vector),p0V,p1V,pAb))+","+str(params[1])+","+str(params[2])+","+str(params[3])+"\n")
+	feature_vector=[]
+	for each_word in range(len(wordDic)):
+		feature_vector.append(0)
+	
+
+for line in ftest6:
+	line = line.rstrip()
+	params=line.split("~~~")
+	testLines.append(params[0])
+	words=params[0].split()
+	for each_word in words:
+		if stem(each_word) in wordList:
+			feature_vector[wordList.index(stem(each_word))]+=1  #for basic
+	
+	fout6.write(params[0]+","+str(classifyNB(array(feature_vector),p0V,p1V,pAb))+","+str(params[1])+","+str(params[2])+","+str(params[3])+"\n")
+	feature_vector=[]
+	for each_word in range(len(wordDic)):
+		feature_vector.append(0)
+
+#iterate through the test matrix
+
+#for entry in testFeatureVectorList and line in testLines:
+#	f.write(line+"\t"+classifyNB(array(entry),p0V,p1V,pAb)+"\n")
+
+
+
+
+
+
+
+
+clf = svm.SVC()
+clf.fit(array(featureVectorList), array(label_vector))
+
+testFeatureVectorList=[]
+test="Jai Ho is a big hit, awesome movie"
+for each_word in test:
+	feature_vector[words.index(each_word)]=1 
+
+testFeatureVectorList.append(feature_vector)
+
+clf.predict(array(testFeatureVectorList))
+
+
+
+	
+
+
+
+result = {'feature_vector' : featureVectorList, 'labels': label_vector}
+problem = svm_problem(result['labels'], result['feature_vector'])
+#'-q' option suppress console output
+param = svm_parameter('-q')
+param.kernel_type = LINEAR
+classifier = svm_train(problem, param)
+svm_save_model(classifierDumpFile, classifier)
+ 
+#Test the classifier
+test_feature_vector = getSVMFeatureVector(test_tweets, featureList)
+#p_labels contains the final labeling result
+p_labels, p_accs, p_vals = svm_predict([0] * len(test_feature_vector),test_feature_vector, classifier)
+'''
+
+	
+
+
+
+
